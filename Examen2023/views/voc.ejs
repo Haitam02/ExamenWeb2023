@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="home.css" />
+    <title>Examen 2023</title>
+</head>
+
+<body>
+    <h2>Vocabulary</h2>
+    <table id="liste2">
+        <thead>
+            <th>MOT</th>
+            <th>TRADUCTION </th>
+            <th> STATISTIQUE </th>
+            <th> DELETE</th>
+        </thead>
+        <tbody>
+            <% for(var i=0; i < word.length; i++) {%>
+                <tr>
+                    <td>
+                        <%= word[i].mot %>
+                    </td>
+                    <td>
+                        <%= word[i].traduction %>
+                    </td>
+                    <td>
+                        <%= (word[i].nbJuste/word[i].nbEssaie)*100 %>
+                    </td>
+                    <td>
+                        <form action="/delete" method="POST">
+                            <input type="hidden" name="word" value=<%=word[i].id %> />
+                            <input type="submit" value="Delete" />
+                        </form>
+                    </td>
+
+                </tr>
+                <% } %>
+        </tbody>
+    </table><br>
+    <label>Ajouter un nouveau mot à votre liste de vocabulaire</label>
+    <form action="/ajouter" method="POST">
+        <label>Nouveau mot</label>
+        <input id="word" type="text" name="word" /><br>
+        <label>Traduction</label>
+        <input id="translate" type="text" name="translate" /><br>
+        <input type="submit" value="Ajouter" />
+    </form>
+
+    <form action="/back" method="POST">
+        <input type="submit" value="Revenir" />
+    </form>
+</body>
+
+</html>

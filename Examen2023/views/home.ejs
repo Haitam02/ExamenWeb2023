@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="home.css" />
+    <title>Examen 2023</title>
+</head>
+
+<body>
+    <h2>Test Yourself</h2>
+    <label>How do you say: <%= sWord%> </label>
+    <form action="/" method="POST">
+        <label>Your Answer </label>
+        <input id="answer" type="text" name="answer" /><br>
+        <input type="hidden" name="Dword" value=<%=sWord %> />
+        <input type="submit" value="Répondre" />
+    </form>
+
+    <form action="/pageVoc" method="GET">
+        <input type="submit" value="Ajouter un nouveau mot de vocabualaire" />
+    </form>
+
+</body>
+
+</html>
